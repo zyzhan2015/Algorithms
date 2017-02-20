@@ -28,7 +28,9 @@ public class Stack<Item> {
         return item;
     }
 
-    //TODO: iterator()
+    public Item peak() {
+        return first.item;
+    }
 
     public static void main(String[] args) {
         Stack<String> s = new Stack<String>();

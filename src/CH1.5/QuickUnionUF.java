@@ -47,7 +47,7 @@ public class QuickUnionUF {
                 continue;
             }
             uf.union(p, q);
-            StdOut.printf("%6d %6d\n", p, q);
+            StdOut.printf("%3d %3d\n", p, q);
         }
         StdOut.println(uf.count() + " components");
     }

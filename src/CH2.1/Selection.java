@@ -1,4 +1,5 @@
-import edu.princeton.cs.algs4.*;
+import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.In;
 
 public class Selection {
     public static void sort(Comparable[] a) {

@@ -1,16 +1,21 @@
 import edu.princeton.cs.algs4.*;
 
-public class Selection {
+public class Shell {
     public static void sort(Comparable[] a) {
         int N = a.length;
-        for (int i = 0; i < N; i++) {
-            int min = i;
-            for (int j = i + 1; j < N; j++) {
-                if (less(a[j], a[min])) {
-                    min = j;
+        int h = 1;
+        while (h < N/3) {
+            h = 3 * h + 1;
+        }
+        while (h >= 1) {
+            //在母数组中遍历
+            for (int i = h; i < N; i++) {
+                //在i对应的不同子数组中遍历比较
+                for (int j = i; j >= h && less(a[j], a[j-h]); j -= h) {
+                    exch(a, j, j-h);
                 }
             }
-            exch(a, i, min);
+            h /= 3;
         }
     }
     private static boolean less(Comparable v, Comparable w) {

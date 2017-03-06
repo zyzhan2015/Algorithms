@@ -4,15 +4,18 @@ import edu.princeton.cs.algs4.In;
 public class Selection {
     public static void sort(Comparable[] a) {
         int N = a.length;
+        int count = 0;
         for (int i = 0; i < N; i++) {
             int min = i;
             for (int j = i + 1; j < N; j++) {
                 if (less(a[j], a[min])) {
                     min = j;
+                    count++;
                 }
             }
             exch(a, i, min);
         }
+        StdOut.println(count);
     }
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;

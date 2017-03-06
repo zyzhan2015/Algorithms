@@ -1,21 +1,29 @@
-import edu.princeton.cs.algs4.*;
+import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdRandom;
 
 public class Shell {
     public static void sort(Comparable[] a) {
         int N = a.length;
-        int h = 1;
-        while (h < N/3) {
-            h = 3 * h + 1;
+        int count = 0;
+        Stack<Integer> dist = new Stack<Integer>();
+        int k = 1;
+        dist.push(k);
+        while(k < N / 3) {
+            k = 3 * k + 1;
+            dist.push(k);
         }
-        while (h >= 1) {
+        while (!dist.isEmpty()) {
             //在母数组中遍历
+            int h = dist.pop();
             for (int i = h; i < N; i++) {
                 //在i对应的不同子数组中遍历比较
                 for (int j = i; j >= h && less(a[j], a[j-h]); j -= h) {
                     exch(a, j, j-h);
+                    count++;
                 }
             }
-            h /= 3;
+            StdOut.printf("%6d-sort %6.3f\n", h, ((double)count)/N);
         }
     }
     private static boolean less(Comparable v, Comparable w) {
@@ -41,9 +49,13 @@ public class Shell {
         return true;
     }
     public static void main(String[] args) {
-        String[] a = In.readStrings();
-        sort(a);
-        assert isSorted(a);
-        show(a);
+        //String[] a = StdIn.readAllStrings();
+        for (int i=100; i<=1000000; i*=10) {
+            Double[] rd = new Double[i];
+            for (int j=0; j<i; j++) {
+                rd[j] = StdRandom.uniform();
+            }
+            sort(rd);
+        }
     }
 }

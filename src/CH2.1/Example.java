@@ -27,6 +27,9 @@ public class Example {
         }
         return true;
     }
+    public static boolean check(Comparable[] a) {
+         
+    }
     public static void main(String[] args) {
         String[] a = In.readStrings();
         sort(a);

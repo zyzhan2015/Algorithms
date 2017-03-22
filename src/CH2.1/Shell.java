@@ -20,7 +20,6 @@ public class Shell {
                 //在i对应的不同子数组中遍历比较
                 for (int j = i; j >= h && less(a[j], a[j-h]); j -= h) {
                     exch(a, j, j-h);
-                    count++;
                 }
             }
             StdOut.printf("%6d-sort %6.3f\n", h, ((double)count)/N);
